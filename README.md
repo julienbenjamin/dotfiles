@@ -11,11 +11,10 @@ Just the collection of my personal dotfiles, more concentrated than organized (f
 
 ```
 dotfiles
-|- i3
-    |- .config
-        |- i3
-            |- config
-
+├── i3
+    └── .config
+        └── i3
+            └── config
 ```
 
 
