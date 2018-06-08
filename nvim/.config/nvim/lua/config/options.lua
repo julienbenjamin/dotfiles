@@ -23,5 +23,7 @@ vim.opt.foldlevelstart = 80
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
-  
+
+-- move default colorscheme somewhere else
+vim.cmd.colorscheme("habamax")
   
