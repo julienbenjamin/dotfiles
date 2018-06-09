@@ -132,4 +132,7 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     export MOZ_ENABLE_WAYLAND=1
 fi
 
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+
 . "$HOME/.cargo/env"
