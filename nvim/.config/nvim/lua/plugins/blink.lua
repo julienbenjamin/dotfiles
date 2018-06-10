@@ -7,11 +7,15 @@ return {
   config = function()
     require("blink.cmp").setup({
       keymap = {
-        preset = "enter",
+        --preset = "enter",
+        preset = "default",
+        ["<CR>"] = { "accept", "fallback" },
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
-        ["<Tab>"] = { "select_next", "fallback" },
-        ["<S-Tab>"] = { "select_prev", "fallback" },
+
+        ["<Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
         ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
@@ -28,6 +32,12 @@ return {
       fuzzy = { implementation = "prefer_rust" },
 
       completion = {
+        list = {
+          selection = {
+            preselect = false,
+            auto_insert = false,
+          },
+        },
         keyword = { range = "prefix" },
         menu = {
           draw = {
@@ -39,6 +49,10 @@ return {
           auto_show = true,
         },
       },
+
+      --snippets = {
+      --  preset = "luasnip",
+      --},
 
       signature = { enabled = true },
     })
