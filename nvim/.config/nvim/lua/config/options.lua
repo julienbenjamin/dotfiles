@@ -6,7 +6,6 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.number = true
-vim.opt.nu = true
 --vim.opt.relativenumber = true
 vim.opt.cursorline = false
 vim.opt.splitbelow = true
@@ -26,4 +25,3 @@ vim.opt.swapfile = false
 
 -- move default colorscheme somewhere else
 vim.cmd.colorscheme("habamax")
-  
