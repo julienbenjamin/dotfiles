@@ -1,5 +1,5 @@
 [core]
-editor=flatpak run --file-forwarding re.sonny.Commit @@
+editor=nvim --clean
 autocrlf=input
 safecrlf=true
 
@@ -24,7 +24,3 @@ default=simple
 [alias]
 loga=log --oneline --graph --all
 
-[re.sonny.Commit]
-title-length-hint=72
-body-length-wrap=72
-auto-capitalize-title=true
