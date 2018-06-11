@@ -1,0 +1,25 @@
+[core]
+editor=flatpak run --file-forwarding re.sonny.Commit @@
+autocrlf=input
+safecrlf=true
+
+[color]
+diff=auto
+status=auto
+branch=auto
+ui=auto
+[pull]
+rebase=false
+[credential]
+helper=/usr/lib/git-core/git-credential-libsecret
+[user]
+name=julienbenjamin
+[push]
+default=simple
+[alias]
+loga=log --oneline --graph --all
+
+[re.sonny.Commit]
+title-length-hint=72
+body-length-wrap=72
+auto-capitalize-title=true
