@@ -23,5 +23,5 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.swapfile = false
 
--- move default colorscheme somewhere else
+-- TODO: move default colorscheme somewhere else
 vim.cmd.colorscheme("habamax")
