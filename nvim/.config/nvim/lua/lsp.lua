@@ -1,24 +1,78 @@
--- Remove Global Default Key mapping
-vim.keymap.del("n", "grn")
-vim.keymap.del("n", "gra")
-vim.keymap.del("n", "grr")
-vim.keymap.del("n", "gri")
-vim.keymap.del("n", "gO")
+local lsp = {}
 
--- Create keymapping
--- LspAttach: After an LSP Client performs "initialize" and attaches to a buffer.
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function (args)
-        local keymap = vim.keymap
-        local lsp = vim.lsp
-	    local bufopts = { noremap = true, silent = true }
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-        keymap.set("n", "gr", lsp.buf.references, bufopts)
-        keymap.set("n", "gd", lsp.buf.definition, bufopts)
-        keymap.set("n", "<space>rn", lsp.buf.rename, bufopts)
-        keymap.set("n", "K", lsp.buf.hover, bufopts)
-        keymap.set("n", "<space>f", function()
-            vim.lsp.buf.format({ async = true })
-        end, bufopts)
-    end
-})
+local function on_attach(_, bufnr)
+    local opts = { buffer = bufnr, silent = true, noremap = true }
+
+    -- Navigation
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+
+    -- Info
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+
+    -- Refactor
+    vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+
+    -- Formatting
+    vim.keymap.set("n", "<space>f", function()
+        vim.lsp.buf.format({ async = true })
+    end, opts)
+end
+
+local lspconfig = require("lspconfig")
+
+function lsp.setup()
+    -- C/C++
+    lspconfig.clangd.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
+
+    -- Python
+    lspconfig.pyright.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
+
+    -- Rust
+    lspconfig.rust_analyzer.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
+
+    -- Lua
+    lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { "vim" },
+                },
+                workspace = {
+                    checkThirdParty = false,
+                },
+            },
+        },
+    })
+
+    -- Bash
+    lspconfig.bashls.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
+
+    -- Markdown
+    lspconfig.marksman.setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
+end
+
+return lsp

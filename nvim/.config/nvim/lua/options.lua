@@ -1,25 +1,27 @@
--- Hint: use `:h <option>` to figure out the meaning if needed
-vim.opt.clipboard = 'unnamedplus'   -- use system clipboard 
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-vim.opt.mouse = 'a'                 -- allow the mouse to be used in Nvim
-
--- Tab
-vim.opt.tabstop = 4                 -- number of visual spaces per TAB
-vim.opt.softtabstop = 4             -- number of spacesin tab when editing
-vim.opt.shiftwidth = 4              -- insert 4 spaces on a tab
-vim.opt.expandtab = true            -- tabs are spaces, mainly because of python
-
--- UI config
-vim.opt.number = true               -- show absolute number
-vim.opt.relativenumber = true       -- add numbers to each line on the left side
-vim.opt.cursorline = true           -- highlight cursor line underneath the cursor horizontally
-vim.opt.splitbelow = true           -- open new vertical split bottom
-vim.opt.splitright = true           -- open new horizontal splits right
--- vim.opt.termguicolors = true        -- enabl 24-bit RGB color in the TUI
-vim.opt.showmode = false            -- we are experienced, wo don't need the "-- INSERT --" mode hint
-
--- Searching
-vim.opt.incsearch = true            -- search as characters are entered
-vim.opt.hlsearch = false            -- do not highlight matches
-vim.opt.ignorecase = true           -- ignore case in searches by default
-vim.opt.smartcase = true            -- but make it case sensitive if an uppercase is entered
+vim.opt.mouse = 'a'
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.number = true
+vim.opt.nu = true
+--vim.opt.relativenumber = true
+vim.opt.cursorline = false
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+-- vim.opt.termguicolors = true
+vim.opt.showmode = true
+vim.opt.incsearch = true
+vim.opt.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.autoread = true
+vim.opt.scrolloff = 8
+vim.opt.foldlevelstart = 80
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
+  
+  
